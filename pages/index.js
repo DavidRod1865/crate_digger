@@ -1,38 +1,17 @@
-import {useSession, signIn, signOut} from 'next-auth/react';
-import { useState } from 'react';
-import Playlist from './components/Playlist';
+import {useSession, signIn} from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
   const {data: session} = useSession();
-  const [list, setList] = useState([]);
 
-  const getMyPlaylists = async () => {
-    const res = await fetch('/api/playlist');
-    const {items} = await res.json();
-    setList(items);
-  };
+  useEffect(() => {
+    if (session) {
+      router.push('/dashboard'); // Redirect to the dashboard page
+    }
+  }, [session]);
 
-  if (session) {
-    return (
-      <>
-        Signed in as {session?.token?.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-        <hr />
-        <button onClick={() => getMyPlaylists()}>Get all my playlists</button>
-        <div className='flex m-4 flex-wrap'>
-        {list.map((item) => (
-          <Playlist 
-          key={item.id}
-          id={item.id}
-          imageUrl={item.images[0]?.url}
-          name={item.name}
-          playlistUrl={item.external_urls.spotify}
-          />
-        ))}
-        </div>
-      </>
-    );
-  }
   return (
     <>
       Not signed in <br />

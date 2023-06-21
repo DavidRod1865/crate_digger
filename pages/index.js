@@ -13,9 +13,11 @@ export default function Home() {
   }, [session]);
 
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+    <main className='flex justify-center items-center w-screen h-screen'>
+      <div className='bg-white rounded-lg w-80 h-96 flex flex-col items-center justify-between p-4'>
+        <h1 className='text-black mt-6'>Crate Digger</h1>
+        <button onClick={() => signIn()} className='rounded-full bg-green-500 min-w-min p-2 text-black mb-6'>Log in with Spotify</button>
+      </div>
+    </main>
   );
 }

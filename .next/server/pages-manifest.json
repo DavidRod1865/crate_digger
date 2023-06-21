@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
+  "/api/playlist": "pages/api/playlist.js",
   "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/dashboard": "pages/dashboard.js",
-  "/api/playlist": "pages/api/playlist.js"
+  "/": "pages/index.js",
+  "/dashboard": "pages/dashboard.js"
 }

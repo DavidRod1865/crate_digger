@@ -1,20 +1,29 @@
 import React from 'react'
-import LogoutButton from '../logout'
-import { Auth0Provider } from '@auth0/auth0-react'
+import Playlist from '../components/Playlist'
+import Profile from '../components/Profile'
+import Nav from '../components/Nav'
+import { topTracks } from '../api/spotify/search'
 
 const Dashboard = () => {
-  return (
-    <Auth0Provider
-      domain="cratedigger1865.us.auth0.com"
-      clientId="tPBirsmjejs8g1D2OUbD2MwekTaYZHMb"
-      authorizationParams={{
-      redirect_uri: "http://localhost:3000"
-    }}>
-        <div>Dashboard<br/><br/>
 
-        <LogoutButton />
-        </div>
-    </Auth0Provider>
+  return (
+    <>
+      <Nav />
+      <Profile />
+      <div className='p-5 flex justify-between'>
+        <Playlist />
+        <Playlist />
+        <Playlist />
+        <Playlist />
+        <Playlist />
+      </div>
+      <main className='items-center h-screen w-full'>
+        Dashboard Goes Here!
+    <div>
+      <button onClick={topTracks}>Fetch Top Tracks</button>
+    </div>
+      </main>
+    </>
   )
 }
 

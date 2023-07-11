@@ -5,15 +5,20 @@ import Sidebar from '@/components/Sidebar';
 import Center from '@/components/Center';
 
 export default function Home() {
-  const session = useSession(); // Removed ": session" from the declaration
+  const { data: session, status } = useSession(); // Destructure session and status from useSession()
 
   const router = useRouter();
 
   useEffect(() => {
+    if (status === 'loading') {
+      // Handle loading state if needed
+      return;
+    }
+    
     if (!session) {
       router.push('/login'); // Redirect to "/login" if no session
     }
-  }, [session, router]);
+  }, [session, status, router]);
 
   return (
     <div className='bg-black h-screen overflow-hidden'>

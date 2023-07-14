@@ -12,6 +12,8 @@
     "@auth0/auth0-react": "^2.1.0",
     "@heroicons/react": "^1.0.6",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "http-proxy-middleware": "^2.0.6",
     "lodash": "^4.17.21",
     "next": "13.4.4",
     "next-auth": "^4.22.1",

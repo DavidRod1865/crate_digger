@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, MenuAlt1Icon} from '@heroicons/react/outline';
 import { signOut, useSession } from 'next-auth/react'
 import { shuffle } from 'lodash'
 import useSpotify from '@/hooks/useSpotify';
@@ -55,14 +55,17 @@ const Center = () => {
     // console.log(playlist)
 
     return (
-      <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
-          <header className='absolute top-5 right-8'>
-              <div className='flex items-center bg-black space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded-full p-2 pr-2' onClick={() => signOut({callbackUrl: "/login"})}>
-                  <img className="rounded-full h-6 w-6" src={user?.images?.[0].url || defaultImage} alt="profile-image" />
-                  <h2>{user?.display_name}</h2>
-                  <ChevronDownIcon className='h-5 w-5' />
-              </div>
-          </header>
+      <div className='flex-grow h-screen w-screen overflow-y-scroll scrollbar-hide'>
+            <header className='absolute top-5 right-8 flex items-center'>
+                <div className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-[#18D860] relative hidden sm:inline-block p-1 mr-8'>
+                    <h1 className='relative text-black font-bold text-lg'>Crate Digger</h1>
+                </div>
+                <div className='flex items-center bg-black space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded-full p-2 pr-2' onClick={() => signOut({callbackUrl: "/login"})}>
+                    <img className="rounded-full h-6 w-6" src={user?.images?.[0].url || defaultImage} alt="profile-image" />
+                    <h2>{user?.display_name}</h2>
+                    <ChevronDownIcon className='h-5 w-5' />
+                </div>
+            </header>
 
           <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 p-8`}>
             <img className='h-48 w-48 shadow-xl' src={ playlist?.images?.[0].url } alt='' />

@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import useSpotify from '@/hooks/useSpotify';
 import { useRecoilState } from 'recoil';
 import { playlistIdState } from '@/atoms/playlistAtom';
+import Link from 'next/link';
 
 const Sidebar = () => {
   const spotifyAPI = useSpotify();
@@ -62,10 +63,12 @@ const Sidebar = () => {
         onClick={isMobile ? toggleSidebar : undefined}
       >
         <div className="space-y-4">
-        <button className='flex items-center space-x-2 hover:text-white'>
-          <HomeIcon className="h-5 w-5" />
-          <p>Home</p>
-        </button>
+          <Link href="/">
+            <button className='flex items-center space-x-2 hover:text-white'>
+              <HomeIcon className="h-5 w-5" />
+              <p>Home</p>
+            </button>
+          </Link>
         <button className='flex items-center space-x-2 hover:text-white'>
           <SearchIcon className="h-5 w-5" />
           <p>Search</p>

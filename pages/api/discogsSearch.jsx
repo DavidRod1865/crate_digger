@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+
 export default async function handler(req, res) {
-  const { q, track, format, key, secret } = req.query;
-  const targetUrl = `https://api.discogs.com/database/search?q=${q}&format=${format}&key=${key}&secret=${secret}`;
+  const { q, track, key, secret } = req.query;
+  const targetUrl = `https://api.discogs.com/database/search?q=${q}&track=${track}&format=vinyl&key=${key}&secret=${secret}`;
 
   const headers = {
     'Access-Control-Allow-Origin': '*',

@@ -44,8 +44,6 @@ const Song = ({ order, track }) => {
             params: {
               q: artist,
               track: trackName,
-              album: albumName,
-              format: 'vinyl',
               key: process.env.NEXT_PUBLIC_DISC_ID,
               secret: process.env.NEXT_PUBLIC_DISC_SECRET,
             },
@@ -82,8 +80,6 @@ const Song = ({ order, track }) => {
               params: {
                 q: artist,
                 track: trackName,
-                album: albumName,
-                format: 'vinyl',
                 key: process.env.NEXT_PUBLIC_DISC_ID,
                 secret: process.env.NEXT_PUBLIC_DISC_SECRET,
               },

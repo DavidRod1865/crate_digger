@@ -1,6 +1,5 @@
 import React from "react";
 import { getProviders, signIn } from 'next-auth/react';
-import AuthForm from "../components/auth-form";
 
 const Login = ({ providers }) => {
   return (
@@ -16,7 +15,6 @@ const Login = ({ providers }) => {
             </div>
               )
           })}
-        <AuthForm />
       </div>
     </main>
   );

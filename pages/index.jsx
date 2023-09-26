@@ -1,8 +1,9 @@
 import { useSession, getProviders, getSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/main/Sidebar';
 import Center from '../components/Center';
+import Dashboard from '../components/main/Dashboard';
 
 export default function Home() {
   const { data: session, status } = useSession(); // Destructure session and status from useSession()
@@ -23,8 +24,9 @@ export default function Home() {
   return (
     <div className='bg-black h-screen overflow-hidden'>
       <main className='flex'>
-        <Sidebar />
-        <Center />
+        {/* <Sidebar /> */}
+        {/* <Center /> */}
+        <Dashboard />
       </main>
     </div>
   );

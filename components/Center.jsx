@@ -5,7 +5,8 @@ import { shuffle } from 'lodash';
 import useSpotify from "../hooks/useSpotify";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { playlistState, playlistIdState } from '../atoms/playlistAtom';
-import Songs from './Songs';
+import Songs from './song/Songs';
+import Button from './ui/buttons/Button';
 
 const colors = [
   'from-red-500',
@@ -27,11 +28,12 @@ const Center = () => {
   const [color, setColor] = useState(null);
   const [user, setUser] = useState(null);
   const playlistID = useRecoilValue(playlistIdState);
-  const [playlist, setPlaylist] = useRecoilState(playlistState);
+  const [playlist, setPlaylist] = useRecoilState(playlistIdState);
 
   useEffect(() => {
     if (spotifyAPI.getAccessToken()) {
-      spotifyAPI.getMe().then((data) => setUser(data.body));
+      spotifyAPI.getMe()
+      .then((data) => setUser(data.body));
     }
   }, [session, spotifyAPI]);
 
@@ -59,15 +61,8 @@ const Center = () => {
         <div
           className='flex items-center bg-black space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded-full p-2 pr-2'
           onClick={() => signOut({ callbackUrl: '/login' })}
-        >
-          <img
-            className='rounded-full h-6 w-6'
-            src={user?.images?.[0].url || defaultImage}
-            alt='profile-image'
-          />
-          <h2>{user?.display_name}</h2>
-          <ChevronDownIcon className='h-5 w-5' />
-        </div>
+        ></div>
+         <Button user={user} />
       </header>
 
       <section

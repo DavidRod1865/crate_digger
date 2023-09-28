@@ -1,8 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Crate Digger
+
+Crate Digger is a web application that connects your Spotify playlists with Discogs to help you discover vinyl records of your favorite songs. It's the perfect tool for vinyl enthusiasts who want to bring the analog charm of vinyl records to their digital music collections.
+
+## Features
+
+- **Seamless Spotify Integration:** Log in with your Spotify Premium account and explore your playlists effortlessly.
+- **Discover Vinyl Gems:** Find out which of your favorite songs are available on vinyl and get direct links to purchase them on Discogs.
+- **Create Your Vinyl Wishlist:** Keep track of vinyl records you desire by adding them to your wishlist.
+- **Musical Insights:** Gain insights into your music taste through personalized statistics based on your Spotify profile.
+
+## Technologies Used
+
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Spotify RESTful API](https://developer.spotify.com/documentation/web-api/)
+- [Discogs RESTful API](https://www.discogs.com/developers)
 
 ## Getting Started
 
-First, run the development server:
+To run Crate Digger locally, follow these steps:
+
+1. Clone this repository to your local machine.
+
+```
+git clone https://github.com/DavidRod1865/crate_digger.git
+```
+
+2. Navigate to the project directory.
+
+```
+cd crate_digger
+```
+
+3. Install dependencies using npm or yarn.
+
+```
+npm install
+# or
+yarn install
+```
+
+4. Set up environment variables:
+- Create a .env.local file in the root directory.
+- Add your Spotify and Discogs API credentials to this file.
+
+```env
+SPOTIFY_CLIENT_ID=your-spotify-client-id
+SPOTIFY_CLIENT_SECRET=your-spotify-client-secret
+DISCOGS_API_KEY=your-discogs-api-key
+DISCOGS_API_SECRET=your-discogs-api-secret
+```
+
+4. Start the development server.
 
 ```bash
 npm run dev
@@ -14,25 +64,15 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Deployment
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+You can deploy Crate Digger to platforms like Vercel, Netlify, or GitHub Pages. Make sure to set up your environment variables in your deployment environment as well.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We welcome contributions! If you'd like to contribute to Crate Digger, please follow our [Contributing Guidelines](CONTRIBUTING.md).
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

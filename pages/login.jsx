@@ -6,7 +6,7 @@ const Login = ({ providers }) => {
     <main className="flex flex-col justify-between h-screen md:bg-[url('/lena-kudryavtseva-hdODD2TVIlM-unsplash.jpg')] bg-[url('/lena-kudryavtseva-qRV2TQ7Aul4-unsplash.jpg')] bg-cover">
       <div className="flex flex-auto justify-center items-center">
         <div className="flex flex-col bg-black items-center bg-opacity-90 p-5 rounded-2xl w-96 text-center">
-          <img src="web-logo.png" alt="Crate Digger Logo" class="mx-auto h-24 w-auto mb-4 mt-2" />
+          <img src="web-logo.png" alt="Crate Digger Logo" className="mx-auto h-24 w-auto mb-4 mt-2" />
 
           <h1 className="text-4xl font-extrabold text-white hover:text-orange-600 transition duration-300 p-2">Crate Digger</h1>
           <h2 className="text-2xl font-semibold text-white break-normal">Discover Vinyl Records</h2>

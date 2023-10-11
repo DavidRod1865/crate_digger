@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { playlistIdState } from '../../atoms/playlistAtom';
+import { useRecoilState } from 'recoil';
+import { playlistState } from '../../atoms/playlistAtom';
 import Songs from '../../components/song/Songs';
 import { useRouter } from 'next/router';
 import useSpotify from '../../hooks/useSpotify';
@@ -24,21 +24,25 @@ const colors = [
 const AlbumPage = () => {
     const router = useRouter();
     const { id } = router.query;
-
-    const spotifyAPI = useSpotify();
     const defaultImage = '/recordImage.png';
-    const [color, setColor] = useState(null);
-    const [playlist, setPlaylist] = useRecoilState(playlistIdState);
-
+    
+    // get spotify api
+    const spotifyAPI = useSpotify();
+    // get playlist from recoil
+    const [playlist, setPlaylist] = useRecoilState(playlistState);
+    
+    // get playlist on load
     useEffect(() => {
       if (spotifyAPI.getAccessToken() && id) {
         spotifyAPI
-          .getPlaylist(id)
-          .then((data) => setPlaylist(data.body))
-          .catch((err) => console.log('Playlist failed to load.', err));
+        .getPlaylist(id)
+        .then((data) => setPlaylist(data.body))
+        .catch((err) => console.log('Playlist failed to load.', err));
       }
-    }, [spotifyAPI, playlistIdState]);
-
+    }, [spotifyAPI, playlistState]);
+    
+    // change color on playlist change
+    const [color, setColor] = useState(null);
     useEffect(() => {
       setColor(shuffle(colors)[0]);
     }, [id]);
@@ -59,15 +63,16 @@ const AlbumPage = () => {
             alt=''
             />
           <div>
-            <p>PLAYLIST</p>
             <h1 className='text-2xl md:text-3xl lg:text-5xl font-bold'>
               {playlist?.name}
             </h1>
           </div>
         </div>
       </section>
-        <Songs />
-    </div>        
+      
+      <Songs />
+      
+      </div>        
 
           </>
   );

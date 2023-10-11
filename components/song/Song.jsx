@@ -43,6 +43,7 @@ const Song = ({ order, track }) => {
           .get(`/api/discogsSearch`, {
             params: {
               q: artist,
+              album: albumName,
               track: trackName,
               key: process.env.NEXT_PUBLIC_DISC_ID,
               secret: process.env.NEXT_PUBLIC_DISC_SECRET,

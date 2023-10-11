@@ -5,7 +5,7 @@ const Button = ({ href, text, onClick }) => {
         return (
           <Link 
           href={href} 
-          className="flex items-center bg-black space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded p-2 m-4"
+          className="flex items-center bg-purple-800 space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded p-2 m-4"
           >
               <button>{text}</button>
           </Link>
@@ -14,7 +14,7 @@ const Button = ({ href, text, onClick }) => {
 
   return (
     <button 
-      className="flex items-center bg-black space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded p-2 m-4"
+      className="flex items-center bg-purple-800 space-x-3 text-white opacity-90 hover:opacity-80 cursor-pointer rounded p-2 m-4"
       onClick={onClick}
     >
     {text}

@@ -47,7 +47,7 @@ const SearchBar = () => {
 
   return (
     <div>
-      <div className="flex align-middle">
+      <div className="flex align-middle px-8">
         <input
           type="text"
           value={searchQuery}

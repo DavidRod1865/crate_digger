@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import { playlistIdState } from '../../atoms/playlistAtom';
+import { playlistState } from '../../atoms/playlistAtom';
 import { useRecoilValue } from 'recoil';
 import Song from './Song';
 import PageButton from '../ui/buttons/PageButton';
 
 const Songs = () => {
-  const playlist = useRecoilValue(playlistIdState);
-  const itemsPerPage = 10;
-  const totalPages = Math.ceil((playlist?.tracks?.items.length || 0) / itemsPerPage);
 
-  const [currentPage, setCurrentPage] = useState(1);
-
+  // Get current playlist
+  const playlist = useRecoilValue(playlistState);
   const getCurrentPlaylist = () => {
     if (!playlist || !playlist.tracks || !playlist.tracks.items) return [];
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return playlist?.tracks?.items.slice(startIndex, endIndex);
   };
-
+  
   // console.log(getCurrentPlaylist()[0])
-  // console.log(playlist?.tracks.items)
-
+  // console.log(playlist)
+  
+  // Pagination
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil((playlist?.tracks?.items.length || 0) / itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

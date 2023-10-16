@@ -50,6 +50,7 @@ const Song = ({ order, track }) => {
           })
           .then(response => {
             setVinyls(response.data.results);
+            console.log(response.data);
             localStorage.setItem(cacheKey, JSON.stringify(response.data));
           })
           .catch(error => {

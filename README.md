@@ -2,6 +2,8 @@
 
 Crate Digger is a web application that connects your Spotify playlists with Discogs to help you discover vinyl records of your favorite songs. It's the perfect tool for vinyl enthusiasts who want to bring the analog charm of vinyl records to their digital music collections.
 
+![Crate Digger Photo](/public/Screenshot_Crate_Digger.png)
+
 ## Features
 
 - **Seamless Spotify Integration:** Log in with your Spotify Premium account and explore your playlists effortlessly.

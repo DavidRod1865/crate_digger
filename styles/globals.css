@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.collapse-title, .collapse-content {
+  transition: background-color .75s ease; /* Smooth transition for background color */
+}

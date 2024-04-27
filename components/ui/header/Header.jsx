@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import useSpotify from '../../../hooks/useSpotify';
 import Button from '../buttons/Button';
-import UserButton from '../buttons/UserButton';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
-const Header = () => {
+function Header(){
     const spotifyAPI = useSpotify();
     const [user, setUser] = useState(null);
     const { data: session } = useSession();
@@ -23,7 +22,6 @@ const Header = () => {
                 </h1>
             </div>
             <Button href="/" text="Home" />
-            <UserButton user={user} onClick={() => signOut({ callbackUrl: '/login' })} />
         </header>
     )
 }

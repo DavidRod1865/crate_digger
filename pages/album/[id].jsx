@@ -78,13 +78,13 @@ const AlbumPage = () => {
 
   return (
     <div className="flex">
-      <Sidebar user={localUser} playlists={localPlaylists} />
-      <div className="flex-grow h-screen w-screen overflow-y-scroll scrollbar-hide">
+      {/* <Sidebar user={localUser} playlists={localPlaylists} /> */}
+      <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide">
         <section
           className={`flex flex-col space-x-7 h-fit p-8 bg-gradient-to-b to-black ${color}`}
         >
-          <Header />
-          <SearchBar />
+          {/* <Header />
+          <SearchBar /> */}
           <div className="mt-1">
             <img
               className="h-48 w-48 shadow-xl"

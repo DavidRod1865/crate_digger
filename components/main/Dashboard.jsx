@@ -4,9 +4,11 @@ import useSpotify from "../../hooks/useSpotify";
 import Header from "../ui/header/Header";
 import SearchBar from "../ui/search/SearchBar";
 import Sidebar from "../main/Sidebar";
-import Playlists from "../ui/playlist/Playlists";
+import PlaylistGroup from "../ui/playlist/PlaylistGroup";
 import { playlistState, userState } from "../../atoms/playlistAtom";
 import { useRecoilState } from "recoil";
+import Songs from "../song/Songs";
+import dynamic from 'next/dynamic';
 
 const Dashboard = () => {
   // get spotify api
@@ -54,14 +56,13 @@ const Dashboard = () => {
     }
   }, [session, spotifyAPI]);
 
+  // Example of client-side conditional rendering based on state
+  const [currentPage, setCurrentPage] = useState("home");
+
   return (
     <div className="flex">
-      <Sidebar user={localUser} playlists={localPlaylists}/>
-      <div className="w-screen">
-        <Header />
-        <SearchBar playlists={localPlaylists} />
-        <Playlists playlists={localPlaylists} />
-      </div>
+        {currentPage === "home" && <PlaylistGroup playlists={localPlaylists} />}
+        {currentPage === "songs" && <DynamicSongs />}
     </div>
   );
 };

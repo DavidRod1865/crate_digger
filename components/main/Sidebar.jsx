@@ -2,7 +2,6 @@ import { HomeIcon, LibraryIcon, HeartIcon } from "@heroicons/react/outline";
 import UserInfo from "./UserInfo";
 import Link from "next/link";
 function Sidebar({ user, playlists }) {
-  console.log(playlists);
 
   return (
     <div

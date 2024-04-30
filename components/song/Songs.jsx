@@ -15,9 +15,6 @@ const Songs = () => {
     return playlist?.tracks?.items.slice(startIndex, endIndex);
   };
   
-  // console.log(getCurrentPlaylist()[0])
-  // console.log(playlist)
-  
   // Pagination
   const itemsPerPage = 10;
   const totalPages = Math.ceil((playlist?.tracks?.items.length || 0) / itemsPerPage);

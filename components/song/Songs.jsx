@@ -31,7 +31,7 @@ const Songs = () => {
       <PageButton
         currentPage={currentPage}
         totalPages={totalPages}
-        setCurrentPage={handlePageChange} // Pass the handler function
+        setCurrentPage={handlePageChange}
       />
     </div>
   );

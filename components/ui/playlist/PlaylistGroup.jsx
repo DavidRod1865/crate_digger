@@ -31,7 +31,7 @@ const Playlists = ({ playlists }) => {
           );
         })}
       </div>
-      <SongTable playlistID={activePlaylistID} />
+      <SongTable playlistID={activePlaylistID} isActive={activePlaylistID} />
     </>
   );
 };

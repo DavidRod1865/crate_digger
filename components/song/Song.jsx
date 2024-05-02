@@ -1,11 +1,9 @@
 import useSpotify from "../../hooks/useSpotify";
-import {
-  PlusCircleIcon,
-  CheckIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { CheckIcon, XIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
+import VinylItem from "../main/VinylItem";
+import defaultRecord from "../../public/recordImage.png";
 
 const Song = ({ track }) => {
   const spotifyAPI = useSpotify();
@@ -118,17 +116,17 @@ const Song = ({ track }) => {
   }, [track]);
 
   return (
-      <tr key={track.id}>
-      <td>
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </td>
+    <tr key={track.id}>
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img src={track.album.images?.[0]?.url || 'path/to/default/image.jpg'} alt="Track Artwork" />
+              <img
+                src={
+                  track.album.images?.[0]?.url || defaultRecord
+                }
+                alt="Track Artwork"
+              />
             </div>
           </div>
           <div>
@@ -145,54 +143,68 @@ const Song = ({ track }) => {
         </span>
       </td>
       <td>
-        {vinyls.length > 0 ? (
-          <CheckIcon
-            className="w-10 p-1 text-[#18D860]"
-            onClick={() => setShowVinyls(!showVinyls)}
-          />
-        ) : (
-          <XIcon className="w-10 p-1 text-red-500" />
-        )}
+        <div className="flex justify-center">
+          {vinyls.length > 0 ? (
+            <CheckIcon
+              className="w-10 p-1 text-[#18D860]"
+              onClick={() => setShowVinyls(!showVinyls)}
+            />
+          ) : (
+            <XIcon className="w-10 p-1 text-red-500" />
+          )}
+        </div>
       </td>
       <td>
+        <div className="flex justify-center">
+
         <button
           className="btn btn-ghost btn-xs"
-          onClick={() => document.getElementById(`my_modal_${track.id}`).showModal()}
-        >
+          onClick={() =>
+            document.getElementById(`my_modal_${track.id}`).showModal()
+          }
+          >
           Vinyl Details
         </button>
+          </div>
         <dialog id={`my_modal_${track.id}`} className="modal">
           <div className="modal-box w-full">
-            {vinyls.length == 0 ? (
-              <h1 className="text-white">No Vinyl Details</h1>
-            ) : (
-              <>
-                <h1 className="text-white">Vinyl Details</h1>
-                {getCurrentVinyls().map((vinyl) => (
-                  <div key={vinyl.id} className='flex items-center justify-between hover:text-white px-3 pt-1'>
-                    <a href={`https://www.discogs.com${vinyl.uri}`} target='_blank' className='flex-1 pr-3'>
-                      <div className='py-2.5 grid grid-cols-6'>
-                        <span className='col-span-3 truncate'>{vinyl.title}</span>
-                        <span className='pl-10'>{vinyl.country}</span>
-                        <span className='text-end'>{vinyl.year}</span>
-                        <span className='text-end'>{vinyl.format}</span>
-                      </div>
-                    </a>
-                    <PlusCircleIcon className='w-10 ml-auto px-1' />
-                  </div>
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>Album</th>
+                  <th>Country</th>
+                  <th>Year</th>
+                  <th>Label</th>
+                  <th>Format</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {vinyls.length === 0 ? (
+                  <tr>
+                    <td colSpan="5">No Vinyl Details</td>
+                  </tr>
+                ) : (
+                  getCurrentVinyls().map((vinyl, index) => (
+                    <VinylItem key={vinyl.id} vinyl={vinyl} index={index + 1} />
+                  ))
+                )}
+              </tbody>
+            </table>
+            {vinyls.length > 0 && (
+              <div className="pagination flex justify-center mt-4 gap-2">
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <button
+                    key={index}
+                    className={`btn ${
+                      currentPage === index + 1 ? "btn-active" : ""
+                    }`}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
                 ))}
-                <div className='flex justify-center mt-[1rem] gap-[0.5rem] mb-3'>
-                  {Array.from({ length: totalPages }, (_, index) => (
-                    <button
-                      key={index}
-                      className={`w-8 h-8 border-[#ccc] border-solid rounded-full text-black bg-[#fff] cursor-pointer active:bg-[#007bff] active:text-[#fff] ${currentPage === index + 1 ? 'active' : ''}`}
-                      onClick={() => handlePageChange(index + 1)}
-                    >
-                      {index + 1}
-                    </button>
-                  ))}
-                </div>
-              </>
+              </div>
             )}
             <div className="modal-action">
               <form method="dialog">
@@ -203,8 +215,17 @@ const Song = ({ track }) => {
         </dialog>
       </td>
       <td>
-        <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-          <img className="w-10 p-1" src="https://links.papareact.com/9xl" alt="Spotify Logo" />
+        <a
+          href={track.external_urls.spotify}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center"
+        >
+          <img
+            className="w-10 p-1"
+            src="https://links.papareact.com/9xl"
+            alt="Spotify Logo"
+          />
         </a>
       </td>
     </tr>

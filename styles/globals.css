@@ -29,3 +29,7 @@ body {
 .collapse-title, .collapse-content {
   transition: background-color .75s ease; /* Smooth transition for background color */
 }
+
+.modal-box {
+  max-width: fit-content;
+}
